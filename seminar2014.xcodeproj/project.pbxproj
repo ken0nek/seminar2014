@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		4ACB519C1A25F22F003A0748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB519B1A25F22F003A0748 /* AppDelegate.swift */; };
-		4ACB519E1A25F22F003A0748 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB519D1A25F22F003A0748 /* art.scnassets */; };
 		4ACB51A01A25F22F003A0748 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB519F1A25F22F003A0748 /* GameViewController.swift */; };
 		4ACB51A31A25F22F003A0748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB51A11A25F22F003A0748 /* Main.storyboard */; };
 		4ACB51A51A25F22F003A0748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB51A41A25F22F003A0748 /* Images.xcassets */; };
 		4ACB51A81A25F22F003A0748 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB51A61A25F22F003A0748 /* LaunchScreen.xib */; };
 		4ACB51B41A25F230003A0748 /* seminar2014Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB51B31A25F230003A0748 /* seminar2014Tests.swift */; };
+		4ACB51C61A25F349003A0748 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACB51C31A25F32A003A0748 /* Alamofire.framework */; };
+		4ACB51C81A25F3AF003A0748 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4ACB51C31A25F32A003A0748 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4ACB51CA1A25F48C003A0748 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB51C91A25F48C003A0748 /* arrow@2x.png */; };
+		4AD693301A2EF6EC00CC7416 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD6932F1A2EF6EC00CC7416 /* SRWebSocket.m */; };
+		4AD693331A2EF91700CC7416 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD693321A2EF91700CC7416 /* libicucore.dylib */; };
+		4AD693351A2EF91B00CC7416 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD693341A2EF91B00CC7416 /* CFNetwork.framework */; };
+		4AD693371A2EF92F00CC7416 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD693361A2EF92F00CC7416 /* Security.framework */; };
+		4AD693391A2EF93400CC7416 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD693381A2EF93400CC7416 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,13 +31,39 @@
 			remoteGlobalIDString = 4ACB51951A25F22F003A0748;
 			remoteInfo = seminar2014;
 		};
+		4ACB51C21A25F32A003A0748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4ACB51BD1A25F32A003A0748 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		4ACB51C41A25F32A003A0748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4ACB51BD1A25F32A003A0748 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4ACB51C71A25F3A7003A0748 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4ACB51C81A25F3AF003A0748 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4ACB51961A25F22F003A0748 /* seminar2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seminar2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACB519A1A25F22F003A0748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ACB519B1A25F22F003A0748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4ACB519D1A25F22F003A0748 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		4ACB519F1A25F22F003A0748 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4ACB51A21A25F22F003A0748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4ACB51A41A25F22F003A0748 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -38,6 +71,16 @@
 		4ACB51AD1A25F230003A0748 /* seminar2014Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seminar2014Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACB51B21A25F230003A0748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ACB51B31A25F230003A0748 /* seminar2014Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seminar2014Tests.swift; sourceTree = "<group>"; };
+		4ACB51BD1A25F32A003A0748 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
+		4ACB51C91A25F48C003A0748 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		4AD6932D1A2EF6EC00CC7416 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		4AD6932E1A2EF6EC00CC7416 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		4AD6932F1A2EF6EC00CC7416 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		4AD693311A2EF70600CC7416 /* seminar2014-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seminar2014-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AD693321A2EF91700CC7416 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		4AD693341A2EF91B00CC7416 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4AD693361A2EF92F00CC7416 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4AD693381A2EF93400CC7416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD693391A2EF93400CC7416 /* Foundation.framework in Frameworks */,
+				4AD693371A2EF92F00CC7416 /* Security.framework in Frameworks */,
+				4AD693351A2EF91B00CC7416 /* CFNetwork.framework in Frameworks */,
+				4AD693331A2EF91700CC7416 /* libicucore.dylib in Frameworks */,
+				4ACB51C61A25F349003A0748 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +109,11 @@
 		4ACB518D1A25F22F003A0748 = {
 			isa = PBXGroup;
 			children = (
+				4AD693381A2EF93400CC7416 /* Foundation.framework */,
+				4AD693361A2EF92F00CC7416 /* Security.framework */,
+				4AD693341A2EF91B00CC7416 /* CFNetwork.framework */,
+				4AD693321A2EF91700CC7416 /* libicucore.dylib */,
+				4ACB51BD1A25F32A003A0748 /* Alamofire.xcodeproj */,
 				4ACB51981A25F22F003A0748 /* seminar2014 */,
 				4ACB51B01A25F230003A0748 /* seminar2014Tests */,
 				4ACB51971A25F22F003A0748 /* Products */,
@@ -79,13 +132,15 @@
 		4ACB51981A25F22F003A0748 /* seminar2014 */ = {
 			isa = PBXGroup;
 			children = (
+				4AD6932C1A2EF6EC00CC7416 /* SocketRocket */,
 				4ACB519B1A25F22F003A0748 /* AppDelegate.swift */,
-				4ACB519D1A25F22F003A0748 /* art.scnassets */,
 				4ACB519F1A25F22F003A0748 /* GameViewController.swift */,
 				4ACB51A11A25F22F003A0748 /* Main.storyboard */,
 				4ACB51A41A25F22F003A0748 /* Images.xcassets */,
+				4ACB51C91A25F48C003A0748 /* arrow@2x.png */,
 				4ACB51A61A25F22F003A0748 /* LaunchScreen.xib */,
 				4ACB51991A25F22F003A0748 /* Supporting Files */,
+				4AD693311A2EF70600CC7416 /* seminar2014-Bridging-Header.h */,
 			);
 			path = seminar2014;
 			sourceTree = "<group>";
@@ -115,6 +170,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4ACB51BE1A25F32A003A0748 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4ACB51C31A25F32A003A0748 /* Alamofire.framework */,
+				4ACB51C51A25F32A003A0748 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4AD6932C1A2EF6EC00CC7416 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				4AD6932D1A2EF6EC00CC7416 /* SocketRocket-Prefix.pch */,
+				4AD6932E1A2EF6EC00CC7416 /* SRWebSocket.h */,
+				4AD6932F1A2EF6EC00CC7416 /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +199,7 @@
 				4ACB51921A25F22F003A0748 /* Sources */,
 				4ACB51931A25F22F003A0748 /* Frameworks */,
 				4ACB51941A25F22F003A0748 /* Resources */,
+				4ACB51C71A25F3A7003A0748 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -182,6 +257,12 @@
 			mainGroup = 4ACB518D1A25F22F003A0748;
 			productRefGroup = 4ACB51971A25F22F003A0748 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4ACB51BE1A25F32A003A0748 /* Products */;
+					ProjectRef = 4ACB51BD1A25F32A003A0748 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4ACB51951A25F22F003A0748 /* seminar2014 */,
@@ -190,14 +271,31 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		4ACB51C31A25F32A003A0748 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 4ACB51C21A25F32A003A0748 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4ACB51C51A25F32A003A0748 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 4ACB51C41A25F32A003A0748 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		4ACB51941A25F22F003A0748 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACB51CA1A25F48C003A0748 /* arrow@2x.png in Resources */,
 				4ACB51A81A25F22F003A0748 /* LaunchScreen.xib in Resources */,
 				4ACB51A51A25F22F003A0748 /* Images.xcassets in Resources */,
-				4ACB519E1A25F22F003A0748 /* art.scnassets in Resources */,
 				4ACB51A31A25F22F003A0748 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD693301A2EF6EC00CC7416 /* SRWebSocket.m in Sources */,
 				4ACB51A01A25F22F003A0748 /* GameViewController.swift in Sources */,
 				4ACB519C1A25F22F003A0748 /* AppDelegate.swift in Sources */,
 			);
@@ -340,9 +439,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = seminar2014/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "seminar2014/seminar2014-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -350,9 +451,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = seminar2014/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "seminar2014/seminar2014-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +512,7 @@
 				4ACB51B91A25F230003A0748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4ACB51BA1A25F230003A0748 /* Build configuration list for PBXNativeTarget "seminar2014Tests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +521,7 @@
 				4ACB51BC1A25F230003A0748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
