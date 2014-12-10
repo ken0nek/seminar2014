@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AB20FEF1A38580600CAC535 /* Armv0.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4AB20FEE1A38580600CAC535 /* Armv0.dae */; };
 		4ACB519C1A25F22F003A0748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB519B1A25F22F003A0748 /* AppDelegate.swift */; };
 		4ACB51A01A25F22F003A0748 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACB519F1A25F22F003A0748 /* GameViewController.swift */; };
 		4ACB51A31A25F22F003A0748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ACB51A11A25F22F003A0748 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4AB20FEE1A38580600CAC535 /* Armv0.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Armv0.dae; sourceTree = "<group>"; };
 		4ACB51961A25F22F003A0748 /* seminar2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seminar2014.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACB519A1A25F22F003A0748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4ACB519B1A25F22F003A0748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				4ACB51A11A25F22F003A0748 /* Main.storyboard */,
 				4ACB51A41A25F22F003A0748 /* Images.xcassets */,
 				4ACB51C91A25F48C003A0748 /* arrow@2x.png */,
+				4AB20FEE1A38580600CAC535 /* Armv0.dae */,
 				4ACB51A61A25F22F003A0748 /* LaunchScreen.xib */,
 				4ACB51991A25F22F003A0748 /* Supporting Files */,
 				4AD693311A2EF70600CC7416 /* seminar2014-Bridging-Header.h */,
@@ -297,6 +300,7 @@
 				4ACB51A81A25F22F003A0748 /* LaunchScreen.xib in Resources */,
 				4ACB51A51A25F22F003A0748 /* Images.xcassets in Resources */,
 				4ACB51A31A25F22F003A0748 /* Main.storyboard in Resources */,
+				4AB20FEF1A38580600CAC535 /* Armv0.dae in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
