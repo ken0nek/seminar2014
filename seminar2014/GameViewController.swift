@@ -117,7 +117,7 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     }
     
     func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
-        
+        println("code: \(code)\n reason: \(reason)")
     }
     
     func sendData(radian1: Float, _ radian2: Float) {
@@ -134,7 +134,7 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
             return
         }
         
-        let data = "{\"degree1\":\"\(degree1)\", \"degree2\":\"\(degree2)\"}"
+        let data = "\(degree1) \(degree2)\n"
         
         println("sending : \(data)")
         
