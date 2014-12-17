@@ -19,7 +19,8 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     let w: CGFloat = 320.0
     let h: CGFloat = 568.0
     // let IPADDRESS = "192.168.149.102"
-    let IPADDRESS = "172.16.0.2"
+    // let IPADDRESS = "172.16.0.2"
+    let IPADDRESS = "192.168.2.8"
     let PORT = "443"
     
     var webSocketInstance: SRWebSocket = SRWebSocket()
@@ -43,6 +44,11 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         camera.camera = SCNCamera()
         self.scene?.rootNode.addChildNode(camera)
         camera.position = SCNVector3(x: 0, y: 0, z: 15)
+        
+        let url = NSURL(string: "ws://\(IPADDRESS):\(PORT)")!
+        webSocketInstance = SRWebSocket(URLRequest: NSURLRequest(URL: url))!
+        webSocketInstance.delegate = self
+        webSocketInstance.open()
         
         robo = self.scene!.rootNode.childNodeWithName("Robo", recursively: true)!
         robo?.rotation = SCNVector4Make(0, 0, 1, Float(M_PI)/2.0)
@@ -73,11 +79,6 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
 //        box.firstMaterial?.diffuse.contents = UIColor.redColor()
 //        let boxNode = SCNNode(geometry: box)
 //        self.scene?.rootNode.addChildNode(boxNode)
-        
-        let url = NSURL(string: "ws://\(IPADDRESS):\(PORT)")!
-        webSocketInstance = SRWebSocket(URLRequest: NSURLRequest(URL: url))!
-        webSocketInstance.delegate = self
-        webSocketInstance.open()
         
         label1.text = "radian1"
         label1.textColor = UIColor.blackColor()
@@ -111,22 +112,33 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         println("data received")
     }
     
-    func sendData(radian1: Float, _ radian2: Float) {
-        println("radian1 : \(radian1)\nradian2 : \(radian2)")
+    func webSocket(webSocket: SRWebSocket!, didFailWithError error: NSError!) {
+        println(error.localizedDescription)
+    }
+    
+    func webSocket(webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
         
-        label1.text = "\(radian1)"
-        label2.text = "\(radian2)"
+    }
+    
+    func sendData(radian1: Float, _ radian2: Float) {
+        
+        let degree1 = radian1 * Float(180.0 / M_PI)
+        let degree2 = radian2 * Float(180.0 / M_PI)
+        
+        println("degree1 : \(degree1)\ndegree2 : \(degree2)")
+        
+        label1.text = "\(degree1)"
+        label2.text = "\(degree2)"
         
         if webSocketInstance.readyState.value != SR_OPEN.value {
             return
         }
         
-        println("send!!!!!")
+        let data = "{\"degree1\":\"\(degree1)\", \"degree2\":\"\(degree2)\"}"
         
-        let data = "{\"radian1\":\"\(radian1)\", \"radian2\":\"\(radian2)\"}"
+        println("sending : \(data)")
         
         webSocketInstance.send(data)
-        
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
