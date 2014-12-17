@@ -24,6 +24,13 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     
     var webSocketInstance: SRWebSocket = SRWebSocket()
     
+    var robo: SCNNode?
+    var rootBone: SCNNode?
+    var upperBone: SCNNode?
+    var foreBone: SCNNode?
+    var handBone: SCNNode?
+    var ikc: SCNIKConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,22 +41,25 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         self.scene?.rootNode.addChildNode(camera)
         camera.position = SCNVector3(x: 0, y: 0, z: 15)
         
-        let robo = self.scene!.rootNode.childNodeWithName("Robo", recursively: true)!
-        robo.rotation = SCNVector4Make(0, 0, 1, Float(M_PI)/2.0)
-        let rootBone = robo.childNodeWithName("RootBone", recursively: true)!
-        let upperBone = robo.childNodeWithName("UpperBone", recursively: true)!
-        let foreBone = robo.childNodeWithName("ForeBone", recursively: true)!
-        let handBone = robo.childNodeWithName("HandBone", recursively: true)!
+        robo = self.scene!.rootNode.childNodeWithName("Robo", recursively: true)!
+        robo?.rotation = SCNVector4Make(0, 0, 1, Float(M_PI)/2.0)
+        rootBone = robo?.childNodeWithName("RootBone", recursively: true)!
+        upperBone = robo?.childNodeWithName("UpperBone", recursively: true)!
+        foreBone = robo?.childNodeWithName("ForeBone", recursively: true)!
+        handBone = robo?.childNodeWithName("HandBone", recursively: true)!
         
-        let ikc = SCNIKConstraint.inverseKinematicsConstraintWithChainRootNode(rootBone)
-        ikc.influenceFactor = 1.0
-//        ikc.setMaxAllowedRotationAngle(CGFloat(-90), forJoint: rootBone)
-//        ikc.setMaxAllowedRotationAngle(CGFloat(-120), forJoint: upperBone)
-        handBone.constraints = [ikc]
+        ikc = SCNIKConstraint.inverseKinematicsConstraintWithChainRootNode(rootBone!)
+        ikc?.influenceFactor = 1.0
+        let maxA: CGFloat = CGFloat(M_PI) * 3600.0 / 180.0
+        let maxB: CGFloat = CGFloat(M_PI) * 7200.0 / 180.0
+        ikc?.setMaxAllowedRotationAngle(maxA, forJoint: upperBone!)
+        ikc?.setMaxAllowedRotationAngle(maxB, forJoint: foreBone!)
+        
+        handBone?.constraints = [ikc!]
         
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(1.0)
-        ikc.targetPosition = self.scene!.rootNode.convertPosition(SCNVector3(x: 0, y: -4.2, z: 0), toNode: nil)
+        SCNTransaction.setAnimationDuration(0.0)
+        ikc?.targetPosition = self.scene!.rootNode.convertPosition(SCNVector3(x: 0, y: -4.2, z: 0), toNode: nil)
         SCNTransaction.commit()
         
         let sceneView = self.view as SCNView
@@ -91,22 +101,19 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     }
     
     func sendData(radian1: Float, _ radian2: Float) {
+        if webSocketInstance.readyState.value != SR_OPEN.value {
+            return
+        }
+        
+        println("send!!!!!")
+        
         let data = "{\"radian1\":\"\(radian1)\", \"radian2\":\"\(radian2)\"}"
         
         webSocketInstance.send(data)
+        
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let robo = self.scene!.rootNode.childNodeWithName("Robo", recursively: true)!
-        let rootBone = robo.childNodeWithName("RootBone", recursively: true)!
-        let upperBone = robo.childNodeWithName("UpperBone", recursively: true)!
-        let foreBone = robo.childNodeWithName("ForeBone", recursively: true)!
-        let handBone = robo.childNodeWithName("HandBone", recursively: true)!
-        
-        let ikc = SCNIKConstraint.inverseKinematicsConstraintWithChainRootNode(robo)
-        ikc.setMaxAllowedRotationAngle(CGFloat(90), forJoint: rootBone)
-        ikc.setMaxAllowedRotationAngle(CGFloat(120), forJoint: upperBone)
-        handBone.constraints = [ikc]
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         
         let p = touches.anyObject()!.locationInView(self.view)
         println("touch location : \(p)") // total arm length :  226, buttom : 160, 410, top : 160, 184
@@ -117,16 +124,18 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         println("x : \(xTarget), y : \(yTarget)")
         
         SCNTransaction.begin()
-        SCNTransaction.setAnimationDuration(1.0)
-//         ikc.targetPosition = self.scene!.rootNode.convertPosition(SCNVector3(x: xTarget, y: yTarget, z: 0), toNode: nil)
-        ikc.targetPosition = SCNVector3Make(xTarget, yTarget, 0)
+        SCNTransaction.setAnimationDuration(0.0)
+        // ikc?.targetPosition = self.scene!.rootNode.convertPosition(SCNVector3(x: xTarget, y: yTarget, z: 0), toNode: nil)
+        ikc?.targetPosition = SCNVector3Make(xTarget, yTarget, 0)
         SCNTransaction.commit()
     
-        println("upper euler : \(upperBone.presentationNode().eulerAngles.x), \(upperBone.presentationNode().eulerAngles.y), \(upperBone.presentationNode().eulerAngles.z)")
-        println("upper rotation : \(upperBone.presentationNode().rotation.x), \(upperBone.presentationNode().rotation.y), \(upperBone.presentationNode().rotation.z), \(upperBone.presentationNode().rotation.w)")
+        println("upper euler : \(upperBone?.presentationNode().eulerAngles.x), \(upperBone?.presentationNode().eulerAngles.y), \(upperBone?.presentationNode().eulerAngles.z)")
+        println("upper rotation : \(upperBone?.presentationNode().rotation.x), \(upperBone?.presentationNode().rotation.y), \(upperBone?.presentationNode().rotation.z), \(upperBone?.presentationNode().rotation.w)")
         
-        println("fore eular : \(foreBone.presentationNode().eulerAngles.x), \(foreBone.presentationNode().eulerAngles.y), \(foreBone.presentationNode().eulerAngles.z)")
-        println("fore rotation : \(foreBone.presentationNode().rotation.x), \(foreBone.presentationNode().rotation.y), \(foreBone.presentationNode().rotation.z), \(foreBone.presentationNode().rotation.w)")
+        println("fore eular : \(foreBone?.presentationNode().eulerAngles.x), \(foreBone?.presentationNode().eulerAngles.y), \(foreBone?.presentationNode().eulerAngles.z)")
+        println("fore rotation : \(foreBone?.presentationNode().rotation.x), \(foreBone?.presentationNode().rotation.y), \(foreBone?.presentationNode().rotation.z), \(foreBone?.presentationNode().rotation.w)")
+        
+        sendData(upperBone!.presentationNode().eulerAngles.x, foreBone!.presentationNode().eulerAngles.x)
     }
     
     override func shouldAutorotate() -> Bool {
