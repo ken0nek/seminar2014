@@ -31,6 +31,9 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     var handBone: SCNNode?
     var ikc: SCNIKConstraint?
     
+    var label1: UILabel = UILabel(frame: CGRectMake(40, 40, 80, 40))
+    var label2: UILabel = UILabel(frame: CGRectMake(40, 80, 80, 40))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +78,14 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         webSocketInstance = SRWebSocket(URLRequest: NSURLRequest(URL: url))!
         webSocketInstance.delegate = self
         webSocketInstance.open()
+        
+        label1.text = "radian1"
+        label1.textColor = UIColor.blackColor()
+        self.view.addSubview(label1)
+        
+        label2.text = "radian2"
+        label2.textColor = UIColor.blackColor()
+        self.view.addSubview(label2)
     }
     
     // MARK: SRWebSocketDelegate
@@ -101,6 +112,11 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
     }
     
     func sendData(radian1: Float, _ radian2: Float) {
+        println("radian1 : \(radian1)\nradian2 : \(radian2)")
+        
+        label1.text = "\(radian1)"
+        label2.text = "\(radian2)"
+        
         if webSocketInstance.readyState.value != SR_OPEN.value {
             return
         }
@@ -129,13 +145,13 @@ class GameViewController: UIViewController, SRWebSocketDelegate {
         ikc?.targetPosition = SCNVector3Make(xTarget, yTarget, 0)
         SCNTransaction.commit()
     
-        println("upper euler : \(upperBone?.presentationNode().eulerAngles.x), \(upperBone?.presentationNode().eulerAngles.y), \(upperBone?.presentationNode().eulerAngles.z)")
-        println("upper rotation : \(upperBone?.presentationNode().rotation.x), \(upperBone?.presentationNode().rotation.y), \(upperBone?.presentationNode().rotation.z), \(upperBone?.presentationNode().rotation.w)")
+//        println("upper euler : \(upperBone?.presentationNode().eulerAngles.x), \(upperBone?.presentationNode().eulerAngles.y), \(upperBone?.presentationNode().eulerAngles.z)")
+//        println("upper rotation : \(upperBone?.presentationNode().rotation.x), \(upperBone?.presentationNode().rotation.y), \(upperBone?.presentationNode().rotation.z), \(upperBone?.presentationNode().rotation.w)")
+//        
+//        println("fore eular : \(foreBone?.presentationNode().eulerAngles.x), \(foreBone?.presentationNode().eulerAngles.y), \(foreBone?.presentationNode().eulerAngles.z)")
+//        println("fore rotation : \(foreBone?.presentationNode().rotation.x), \(foreBone?.presentationNode().rotation.y), \(foreBone?.presentationNode().rotation.z), \(foreBone?.presentationNode().rotation.w)")
         
-        println("fore eular : \(foreBone?.presentationNode().eulerAngles.x), \(foreBone?.presentationNode().eulerAngles.y), \(foreBone?.presentationNode().eulerAngles.z)")
-        println("fore rotation : \(foreBone?.presentationNode().rotation.x), \(foreBone?.presentationNode().rotation.y), \(foreBone?.presentationNode().rotation.z), \(foreBone?.presentationNode().rotation.w)")
-        
-        sendData(upperBone!.presentationNode().eulerAngles.x, foreBone!.presentationNode().eulerAngles.x)
+        sendData(-upperBone!.presentationNode().eulerAngles.x, -foreBone!.presentationNode().eulerAngles.x)
     }
     
     override func shouldAutorotate() -> Bool {
